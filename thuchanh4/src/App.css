@@ -1,0 +1,22 @@
+.submitted-info {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.submitted-info h2 {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.submitted-info p {
+  margin: 0.5rem 0;
+  color: #555;
+}
+
+.submitted-info strong {
+  color: #333;
+  margin-right: 0.5rem;
+}
