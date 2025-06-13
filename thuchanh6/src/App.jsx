@@ -42,7 +42,6 @@ export default function App() {
       console.error('Error fetching users:', error)
       return []
     }
-    
   }
 
   //TODO:
