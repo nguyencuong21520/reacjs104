@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import TodoItem from "./TodoItem";
 
 //CRUD
@@ -9,7 +9,7 @@ const TodoPage = () => {
     const [search, setSearch] = useState("");
 
 
-    const handleAddTodo = (text) =>{
+    const handleAddTodo = useCallback((text) =>{
         const newTodo = {
             id: todos.length + 1 + Date.now(),
             text,
@@ -17,25 +17,25 @@ const TodoPage = () => {
             createdAt: new Date().toISOString(),
         }
         setTodos([...todos, newTodo])
-    }
+    }, [input]);
 
-    const handleUpdateTodo = (index, text) =>{
+    const handleUpdateTodo = useCallback((index, text) =>{
         setTodos((prev)=>{
             const newTodos = [...prev];
             newTodos[index].text = text;
             return newTodos;
         });
-    }
+    }, []);
 
-    const handleDeleteTodo = (index) =>{
+    const handleDeleteTodo = useCallback((index)=>{
         setTodos((prev)=>{
             const newTodos = [...prev];
             newTodos.splice(index, 1);
             return newTodos;
         });
-    }
+    }, []);
 
-    const filteredTodos = todos.filter((todo)=>todo.text.toLowerCase().includes(search.toLowerCase()));
+    const filteredTodos = useMemo(()=>todos.filter((todo)=>todo.text.toLowerCase().includes(search.toLowerCase())), [todos, search]);
   return (
     <div className="bg-white p-4 rounded-lg shadow-md w-[500px]">
         <h1 className="text-2xl font-bold text-center mb-4 text-gray-500">Todo List</h1>

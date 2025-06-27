@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 
-const TodoItem = ({todo, onUpdate, onDelete}) => {
+const TodoItem = memo(({todo, onUpdate, onDelete}) => {
   const [isEditing, setIsEditing] = useState(false);
   const [input, setInput] = useState(todo.text);
   return (
@@ -21,6 +21,6 @@ const TodoItem = ({todo, onUpdate, onDelete}) => {
         <button onClick={onDelete} className="bg-red-500 text-white p-2 rounded-md w-1/4 hover:bg-red-600">Delete</button>
     </div>
   );
-};
+});
 
 export default TodoItem;
